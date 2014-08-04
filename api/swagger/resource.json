@@ -1,0 +1,45 @@
+{
+  "apiVersion": "1.0.0",
+  "apis": [
+    {
+      "operations": [
+        {
+          "nickname": "twitter#search",
+          "summary": "performs a twitter search",
+          "notes": "performs a twitter search given the passed 'search' query string parameter",
+          "type": "",
+          "authorizations": {
+            "oauth2": [
+              {
+                "description": "anything",
+                "scope": ""
+              }
+            ]
+          },
+          "method": "GET",
+          "parameters": [
+            {
+              "allowMultiple": false,
+              "description": "query to pass to Twitter",
+              "name": "search",
+              "paramType": "query",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responseMessages": [
+          ]
+        }
+      ],
+      "path": "/twitter"
+    }
+  ],
+  "basePath": "http://localhost/",
+  "models": {
+  },
+  "produces": [
+    "application/json"
+  ],
+  "resourcePath": "/",
+  "swaggerVersion": "1.2"
+}
