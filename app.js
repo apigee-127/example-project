@@ -25,7 +25,7 @@ var volosSwagger = require('volos-swagger');
 
 /**** Express ****/
 
-var PORT = 10010;
+var PORT = process.env.PORT || 10010;
 
 function startExpress() {
 
