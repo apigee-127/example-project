@@ -31,7 +31,7 @@
     "start" : "node app.js"
   },
   "api": {
-    "name": "a127",
+    "name": "a127-example",
     "basePath": "/a127",
     "docsPath": "/docs",
     "main": "app.js"
