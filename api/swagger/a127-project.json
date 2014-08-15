@@ -1,0 +1,138 @@
+{
+  "swagger": 2.0,
+  "info": {
+    "x-apigee-127-version": "1.0.0",
+    "version": "0.0.1",
+    "title": "Twitter search example",
+    "description": "Twitter search example",
+    "termsOfService": "http://apigee.com/about/terms",
+    "contact": {
+      "name": "Apigee 127",
+      "url": "https://github.com/apigee-127"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "x-volos-resources": {
+    "cache": {
+      "provider": "volos-cache-memory",
+      "options": [
+        "name",
+        {
+          "ttl": 10000
+        }
+      ]
+    },
+    "quota": {
+      "provider": "volos-quota-memory",
+      "options": [
+        {
+          "timeUnit": "minute",
+          "interval": 1,
+          "allow": 2
+        }
+      ]
+    },
+    "oauth2": {
+      "provider": "volos-oauth-apigee",
+      "options": [
+        {
+          "NOTE": "This section is replaced by app.js."
+        }
+      ],
+      "validGrantTypes": [ "client_credentials", "authorization_code", "implicit_grant", "password" ],
+      "passwordCheck": "passwordCheck",
+      "paths": {
+        "note": "these will be placed in the paths section",
+        "authorize": "/authorize",
+        "token": "/accessToken",
+        "invalidate": "/invalidate",
+        "refresh": "/refresh"
+      }
+    }
+  },
+  "paths": {
+    "/twitter": {
+      "x-swagger-router-controller": "twitter",
+      "x-volos-authorizations": {
+        "oauth2": []
+      },
+      "x-volos-apply": {
+        "cache": [],
+        "quota": []
+      },
+      "get": {
+        "description": "Returns the results of a search of Twitter",
+        "summary": "Returns the results of a search of Twitter",
+        "operationId": "search",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "The Query to pass to Twitter",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Twitter search response",
+            "schema": {
+              "$ref": "TwitterSearchResponse"
+            }
+          },
+          "default": {
+            "description": "Error payload",
+            "schema": {
+              "$ref": "ErrorModel"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "TwitterSearchResponse": {
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      }
+    },
+    "ErrorModel": {
+      "required": [ "code", "message" ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

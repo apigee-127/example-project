@@ -10,18 +10,12 @@ var _ = require('underscore');
 
 /******* Swagger *******/
 
-var resourceListing = require('./api/swagger/resource-listing.json');
-var resource = require('./api/swagger/resource.json');
-var swaggerResources = [resource];
-
-var swaggerMetadata = require('swagger-tools/middleware/swagger-metadata');
-var swaggerRouter = require('swagger-tools/middleware/swagger-router');
-var swaggerValidator = require('swagger-tools/middleware/swagger-validator');
-
-var volosConfig = require('./config/profiles/apigee.json'); // todo - dynamically load profile
-volosConfig.resources.oauth2.options = [ config.apigee ]; // todo - deal with this account stuff
+var swaggerTools = require('swagger-tools').middleware.v2_0;
+var swaggerObject = require('./api/swagger/a127-project.json');
 var volosSwagger = require('volos-swagger');
 
+// todo: deal with this account & secret stuff in a sane way
+swaggerObject['x-volos-resources']['oauth2']['options'] = [ config.apigee ];
 
 /**** Express ****/
 
@@ -32,16 +26,21 @@ function startExpress() {
   var app = express();
 
   // Swagger middleware
-  app.use(swaggerMetadata(resourceListing, swaggerResources));
-  app.use(swaggerValidator());
-  app.use(volosSwagger(volosConfig));
+  app.use(swaggerTools.swaggerMetadata(swaggerObject));
 
+  // todo: enable when swagger validator is 2.0 compliant
+//  app.use(swaggerTools.swaggerValidator());
+
+  app.use(volosSwagger(swaggerObject));
+
+  // todo: move these into swagger
   app.get('/authorize', oauth.expressMiddleware().handleAuthorize());
   app.post('/accesstoken', oauth.expressMiddleware().handleAccessToken());
   app.post('/invalidate', oauth.expressMiddleware().invalidateToken());
   app.post('/refresh', oauth.expressMiddleware().refreshToken());
 
-  app.use(swaggerRouter({useStubs: true, controllers: './api/controllers'}));
+  // todo: make useStubs configurable via a127
+  app.use(swaggerTools.swaggerRouter({ useStubs: true, controllers: './api/controllers' }));
 
   app.listen(PORT);
 

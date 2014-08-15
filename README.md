@@ -5,5 +5,5 @@ Setup:
 3. create an Apigee account ([https://enterprise.apigee.com]()), deploy the volos proxy, and edit secrets.js to match
 3. install and run redis ([http://redis.io]())
 4. execute: `node bin/create-app.js`
-4. execute: `npm start`
+4. execute: `a127 project start`
 5. try the example curl commands that are printed to the console (from another console window)
