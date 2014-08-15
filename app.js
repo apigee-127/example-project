@@ -27,9 +27,7 @@ function startExpress() {
 
   // Swagger middleware
   app.use(swaggerTools.swaggerMetadata(swaggerObject));
-
-  // todo: enable when swagger validator is 2.0 compliant
-//  app.use(swaggerTools.swaggerValidator());
+  app.use(swaggerTools.swaggerValidator());
 
   app.use(volosSwagger(swaggerObject));
 
