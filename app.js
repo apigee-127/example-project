@@ -11,7 +11,7 @@ var _ = require('underscore');
 /******* Swagger *******/
 
 var swaggerTools = require('swagger-tools').middleware.v2_0;
-var swaggerObject = require('./api/swagger/a127-project.json');
+var swaggerObject = require('./api/swagger/swagger.json');
 var volosSwagger = require('volos-swagger');
 
 // todo: deal with this account & secret stuff in a sane way
