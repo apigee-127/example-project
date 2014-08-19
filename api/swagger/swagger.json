@@ -94,13 +94,13 @@
           "200": {
             "description": "Twitter search response",
             "schema": {
-              "$ref": "TwitterSearchResponse"
+              "$ref": "#/definitions/TwitterSearchResponse"
             }
           },
           "default": {
             "description": "Error payload",
             "schema": {
-              "$ref": "ErrorModel"
+              "$ref": "#/definitions/ErrorModel"
             }
           }
         }
