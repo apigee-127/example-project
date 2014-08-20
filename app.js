@@ -10,12 +10,7 @@ var _ = require('underscore');
 
 /******* Swagger *******/
 
-var swaggerTools = require('swagger-tools').middleware.v2_0;
-var swaggerObject = require('./api/swagger/swagger.json');
-var volosSwagger = require('volos-swagger');
-
-// todo: deal with this account & secret stuff in a sane way
-swaggerObject['x-volos-resources']['oauth2']['options'] = [ config.apigee ];
+var a127 = require('a127-magic');
 
 /**** Express ****/
 
@@ -25,20 +20,13 @@ function startExpress() {
 
   var app = express();
 
-  // Swagger middleware
-  app.use(swaggerTools.swaggerMetadata(swaggerObject));
-  app.use(swaggerTools.swaggerValidator());
-
-  app.use(volosSwagger(swaggerObject));
+  app.use(a127.middleware());
 
   // todo: move these into swagger
   app.get('/authorize', oauth.expressMiddleware().handleAuthorize());
   app.post('/accesstoken', oauth.expressMiddleware().handleAccessToken());
   app.post('/invalidate', oauth.expressMiddleware().invalidateToken());
   app.post('/refresh', oauth.expressMiddleware().refreshToken());
-
-  // todo: make useStubs configurable via a127
-  app.use(swaggerTools.swaggerRouter({ useStubs: true, controllers: './api/controllers' }));
 
   app.listen(PORT);
 
@@ -47,8 +35,19 @@ function startExpress() {
 
 
 
-
 /**** OAuth ****/
+
+// todo: deal with this account & secret stuff in a sane way.
+a127.config.loader = {
+  load: function(file) {
+    var yaml = require('js-yaml');
+    var fs = require('fs');
+    var swaggerObject = yaml.safeLoad(fs.readFileSync(file, 'utf8'));
+    swaggerObject['x-volos-resources']['oauth2']['options'] = [ config.apigee ];
+    return swaggerObject;
+  }
+};
+
 
 var oauthConfig = _.extend({
   validGrantTypes: [ 'client_credentials', 'authorization_code', 'implicit_grant', 'password' ],

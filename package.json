@@ -13,9 +13,9 @@
   "dependencies": {
     "underscore": "",
     "express": "",
-    "twitter": "",
-    "swagger-tools": "",
-    "volos-swagger": "",
+    "twit": "",
+    "js-yaml": "",
+    "a127-magic": "",
     "volos-cache-memory": "",
     "volos-quota-memory": "",
     "volos-oauth-redis": "",
@@ -25,7 +25,7 @@
   },
   "devDependencies":  {
     "volos-management-apigee": "",
-    "should" : "3.1.x"
+    "should" : ""
   },
   "scripts" : {
     "start" : "node app.js"
