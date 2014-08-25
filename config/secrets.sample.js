@@ -9,7 +9,7 @@ exports.twitter = {
 };
 
 // create an account at https://enterprise.apigee.com
-// deploy the proxy volos proxy to your account
+// deploy the apigee remote proxy to your account
 // and fill in the details below
 exports.apigee = {
   organization: '',
