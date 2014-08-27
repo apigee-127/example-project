@@ -37,18 +37,6 @@ function startExpress() {
 
 /**** OAuth ****/
 
-// todo: deal with this account & secret stuff in a sane way.
-a127.config.loader = {
-  load: function(file) {
-    var yaml = require('js-yaml');
-    var fs = require('fs');
-    var swaggerObject = yaml.safeLoad(fs.readFileSync(file, 'utf8'));
-    swaggerObject['x-volos-resources']['oauth2']['options'] = [ config.apigee ];
-    return swaggerObject;
-  }
-};
-
-
 var oauthConfig = _.extend({
   validGrantTypes: [ 'client_credentials', 'authorization_code', 'implicit_grant', 'password' ],
   passwordCheck: checkPassword

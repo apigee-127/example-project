@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /****************************************************************************
  The MIT License (MIT)
 
@@ -42,7 +43,7 @@ function createApp(management, cb) {
 
       console.log('Creating application %s for developer %s', config.appRequest.name, developer.id);
 
-      config.appRequest.developerId = developer.id
+      config.appRequest.developerId = developer.id;
       management.createApp(config.appRequest, cb);
     });
   });

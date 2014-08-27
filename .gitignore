@@ -29,4 +29,8 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
-secrets.js
+
+# Apigee 127 deployment
+config/.a127_env
+config/.a127_secrets
+config/secrets.js
