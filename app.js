@@ -7,10 +7,10 @@ var volos = config.volos;
 var express = require('express');
 var _ = require('underscore');
 
-
 /******* Swagger *******/
 
 var a127 = require('a127-magic');
+var oauth = a127.resource('oauth2');
 
 /**** Express ****/
 
@@ -37,18 +37,7 @@ function startExpress() {
 
 /**** OAuth ****/
 
-var oauthConfig = _.extend({
-  validGrantTypes: [ 'client_credentials', 'authorization_code', 'implicit_grant', 'password' ],
-  passwordCheck: checkPassword
-}, config.apigee);
-
-function checkPassword(username, password, cb) {
-  cb(null, true);
-}
-
-var management = volos.Management.create(oauthConfig);
-var oauth = volos.OAuth.create(oauthConfig);
-
+var management = volos.Management.create(config.apigee);
 
 function createToken(management, oauth, cb) {
 
