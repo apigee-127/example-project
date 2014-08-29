@@ -39,12 +39,12 @@ x-volos-resources:
     options:
       key: *apigeeProxyKey
       uri: *apigeeProxyUri
-    validGrantTypes:
-      - client_credentials
-      - authorization_code
-      - implicit_grant
-      - password
-    passwordCheck: passwordCheck
+      validGrantTypes:
+        - client_credentials
+        - authorization_code
+        - implicit_grant
+        - password
+      passwordCheck: passwordCheck
     paths:
       note: these will be placed in the paths section
       authorize: /authorize
@@ -59,28 +59,6 @@ paths:
     x-volos-apply:
       cache: {}
       quota: {}
-    get:
-      description: Returns the results of a search of Twitter
-      summary: Returns the results of a search of Twitter
-      operationId: search
-      produces:
-        - application/json
-      parameters:
-        - name: search
-          in: query
-          description: The Query to pass to Twitter
-          required: true
-          type: string
-      responses:
-        "200":
-          description: Twitter search response
-          schema:
-            $ref: "#/definitions/TwitterSearchResponse"
-        default:
-          description: Error payload
-          schema:
-            $ref: "#/definitions/ErrorModel"
-  /twitter2:
     get:
       description: Returns the results of a search of Twitter
       summary: Returns the results of a search of Twitter

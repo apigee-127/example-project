@@ -27,7 +27,7 @@ var twitter = require('../helpers/twitter');
 
 module.exports = {
   search: search
-}
+};
 
 function search(req, res, next) {
 
