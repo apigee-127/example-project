@@ -79,10 +79,10 @@ function printHelp() {
 
     console.log('\nexample curl commands:\n');
 
-    console.log('Get a Password Token:');
+    console.log('Get a Client Credential Token:');
     console.log('curl -X POST "http://localhost:%s/accesstoken" -d ' +
-      '"grant_type=password&client_id=%s&client_secret=%s&username=%s&password=%s"\n',
-      PORT, encodeURIComponent(creds.clientId), encodeURIComponent(creds.clientSecret), 'sganyo', 'password');
+      '"grant_type=client_credentials&client_id=%s&client_secret=%s"\n',
+      PORT, encodeURIComponent(creds.clientId), encodeURIComponent(creds.clientSecret));
 
     console.log('Twitter Search:');
     console.log('curl -H "Authorization: Bearer %s" "http://localhost:%s/twitter?search=apigee"\n',
