@@ -26,14 +26,14 @@ x-volos-resources:
   cache:
     provider: volos-cache-memory
     options:
-      - name
-      - ttl: 10000
+      name: name
+      ttl: 10000
   quota:
     provider: volos-quota-memory
     options:
-      - timeUnit: minute
-        interval: 1
-        allow: 2
+      timeUnit: minute
+      interval: 1
+      allow: 2
   oauth2:
     provider: volos-oauth-apigee
     options:
@@ -55,10 +55,10 @@ paths:
   /twitter:
     x-swagger-router-controller: twitter
     x-volos-authorizations:
-      oauth2: []
+      oauth2: {}
     x-volos-apply:
-      cache: []
-      quota: []
+      cache: {}
+      quota: {}
     get:
       description: Returns the results of a search of Twitter
       summary: Returns the results of a search of Twitter
