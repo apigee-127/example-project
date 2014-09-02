@@ -44,7 +44,9 @@ x-volos-resources:
         - authorization_code
         - implicit_grant
         - password
-      passwordCheck: passwordCheck
+      passwordCheck:
+        helper: volos
+        function: passwordCheck
     paths:
       note: these will be placed in the paths section
       authorize: /authorize
@@ -57,7 +59,10 @@ paths:
     x-volos-authorizations:
       oauth2: {}
     x-volos-apply:
-      cache: {}
+      cache:
+        key:
+          helper: volos
+          function: cacheKey
       quota: {}
     get:
       description: Returns the results of a search of Twitter
