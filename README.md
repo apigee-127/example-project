@@ -8,7 +8,7 @@ This example gets you up and running quickly with a sample Apigee 127 project th
 * [About the app](#about)
 * [Troubleshooting](#troubleshooting)
 
-## <a ref="installation"></a>Installation
+## <a name="installation"></a>Installation
 
 1. Clone the example project from GitHub:
 
@@ -22,7 +22,7 @@ This example gets you up and running quickly with a sample Apigee 127 project th
 
     The `-g` option automatically places the `a127` executable commands in you PATH. If you do not use `-g`, then you need to add the `apigee-127/bin `directory to your PATH manually. You may need to use `sudo` to execute this command.
 
-## <a ref="setupsteps"></a>Project setup
+## <a name="setupsteps"></a>Project setup
 
 To run the example project, you need to set up these things first:
 
@@ -70,7 +70,7 @@ To run the example project, you need to set up these things first:
 
 This Apigee Edge proxy allows your local [Volos.js components](https://github.com/apigee-127/a127-documentation/wiki/Understanding-Volos.js) to talk to Apigee Edge through the Edge management API. To be used by Volos.js, the proxy must be deployed to Edge. The proxy is installed with Apigee 127, and lives in the `apigee-127/node_modules/Volos/proxy` directory. 
 
-## <a ref="configure-and-run"></a>Configure and run the app
+## <a name="configure-and-run"></a>Configure and run the app
 
 1. In the `example-project`, copy `config/secrets.sample.js` to `config/secrets.js`.
 2. Edit `config/secrets.js` with your Twitter API keys and Access Tokens. You can find them on the management console for your Twitter app, under the API Keys tab.
@@ -163,7 +163,7 @@ This Apigee Edge proxy allows your local [Volos.js components](https://github.co
 
         ``curl -X POST "http://localhost:10010/accesstoken" -d "grant_type=password&client_id=xxxxxxxxxxxxx&client_secret=yyyyyyyyyy&username=jdoe&password=password"``
 
-## <a ref="about"></a>About the app
+## <a name="about"></a>About the app
 
 This example application implements an API proxy for the Twitter search API. A Node.js server running on your local system communicates with Apigee Edge through the volos Node.js module's management API. 
 
@@ -181,7 +181,7 @@ This example runs locally and makes calls to Apigee Edge to handle OAuth request
 6. (Optional) Metadata is sent to Edge for centralized analytics and monitoring. 
 
 
-## <a ref="troubleshooting"></a>Troubleshooting
+## <a name="troubleshooting"></a>Troubleshooting
 
 * A possible source of error is using incorrect or expired app keys in your configuration. Make sure, for example, that your Twitter credentials are current.
 
