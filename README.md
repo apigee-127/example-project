@@ -2,11 +2,27 @@
 
 This example gets you up and running quickly with a sample Apigee 127 project that proxies the Twitter search API.  
 
+* [About the app](#about)
 * [Installation](#installation)
 * [Project setup](#setupsteps)
 * [Configure and run the app](#configure-and-run)
-* [About the app](#about)
 * [Troubleshooting](#troubleshooting)
+
+## <a name="about"></a>About the app
+
+This example application implements an API proxy for the Twitter search API. A Node.js server running on your local system communicates with Apigee Edge through the volos Node.js module's management API. 
+
+Volos is an open source Node.js solution for developing and deploying production-level APIs. Volos provides a way to leverage common features such as OAuth 2.0, Caching, and Quota Management into your APIs. Volos can proxy support for these features through Apigee Edge, or independently of Edge. 
+
+This example runs locally and makes calls to Apigee Edge to handle OAuth requests. Volos provides the glue that binds together your API implementation and Apigee Edge. 
+
+![Alt text](https://raw.githubusercontent.com/apigee-127/a127-documentation/master/a127/images/with-edge.png)
+
+1. Volos calls Apigee Edge to perform OAuth, Quota, or Caching. Volos only sends metadata to Edge, not the API payload. 
+3. Edge returns a response indicating whether the key was valid.
+4. If valid, the API call is proxied to the local Node.js API implementation.
+5. The API response is returned from the API implementation.
+6. (Optional) Metadata is sent to Edge for centralized analytics and monitoring. 
 
 ## <a name="installation"></a>Installation
 
@@ -162,23 +178,6 @@ This Apigee Edge proxy allows your local [Volos.js components](https://github.co
     **Get a Password Token:** This command returns a new access token on behalf of the user. You can try substituting this access token in the Twitter search API call. 
 
         ``curl -X POST "http://localhost:10010/accesstoken" -d "grant_type=password&client_id=xxxxxxxxxxxxx&client_secret=yyyyyyyyyy&username=jdoe&password=password"``
-
-## <a name="about"></a>About the app
-
-This example application implements an API proxy for the Twitter search API. A Node.js server running on your local system communicates with Apigee Edge through the volos Node.js module's management API. 
-
-Volos is an open source Node.js solution for developing and deploying production-level APIs. Volos provides a way to leverage common features such as OAuth 2.0, Caching, and Quota Management into your APIs. Volos can proxy support for these features through Apigee Edge, or independently of Edge. 
-
-This example runs locally and makes calls to Apigee Edge to handle OAuth requests. Volos provides the glue that binds together your API implementation and Apigee Edge. 
-
-![Alt text](https://raw.githubusercontent.com/apigee-127/a127-documentation/master/a127/images/with-edge.png)
-
-1. The app makes an API call and the endpoint is the Apigee agent (Volos). 
-2. Volos calls Apigee Edge to perform OAuth, Quota, or Caching. Volos only sends metadata to Edge, not the API payload. 
-3. Edge returns a response indicating whether to allow the API call.
-4. If allowed, the API call is proxied to the Node.js API implementation.
-5. The API response is returned from the API implementation.
-6. (Optional) Metadata is sent to Edge for centralized analytics and monitoring. 
 
 
 ## <a name="troubleshooting"></a>Troubleshooting
