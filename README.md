@@ -4,9 +4,9 @@ This example gets you up and running quickly with a sample Apigee 127 project th
 
 * [Installation](#installation)
 * [Project setup](#setupsteps)
-* [Configure and run the app] (#configure-and-run)
-* [About the app] (#about)
-* Troubleshooting
+* [Configure and run the app](#configure-and-run)
+* [About the app](#about)
+* [Troubleshooting](#troubleshooting)
 
 ## <a ref="installation"></a>Installation
 
@@ -181,7 +181,7 @@ This example runs locally and makes calls to Apigee Edge to handle OAuth request
 6. (Optional) Metadata is sent to Edge for centralized analytics and monitoring. 
 
 
-## Troubleshooting
+## <a name="troubleshooting"></a>Troubleshooting
 
 * A possible source of error is using incorrect or expired app keys in your configuration. Make sure, for example, that your Twitter credentials are current.
 
