@@ -181,7 +181,7 @@ This example runs locally and makes calls to Apigee Edge to handle OAuth request
 6. (Optional) Metadata is sent to Edge for centralized analytics and monitoring. 
 
 
-## <a name="troubleshooting"></a>Troubleshooting
+## <a ref="troubleshooting"></a>Troubleshooting
 
 * A possible source of error is using incorrect or expired app keys in your configuration. Make sure, for example, that your Twitter credentials are current.
 
