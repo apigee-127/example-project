@@ -72,7 +72,8 @@ function printHelp() {
   createToken(management, oauth, function(err, creds) {
     if (err) {
       console.log(err);
-      throw err;
+      console.log(err.stack);
+      return;
     }
 
     console.log('listening on %d', PORT);
