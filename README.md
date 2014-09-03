@@ -148,7 +148,7 @@ This Apigee Edge proxy allows your local [Volos.js components](https://github.co
 
 6. Execute these a127 account commands to add values to your account for the deployed `apigee-remote-proxy`:
     1. `a127 account setValue apigeeProxyKey CONSUMERKEY`
-    2. `a127 account setValue apiProxyUri PROXYURI`
+    2. `a127 account setValue apigeeProxyUri PROXYURI`
     
          where:
 
