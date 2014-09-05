@@ -34,6 +34,15 @@ x-volos-resources:
       timeUnit: minute
       interval: 1
       allow: 2
+  analytics:
+    provider: "volos-analytics-apigee"
+    options:
+      key: *apigeeProxyKey
+      uri: *apigeeProxyUri
+      proxy: ExampleApi,
+      bufferSize: 100,
+      flushInterval: 10,
+      batchSize: 10
   oauth2:
     provider: volos-oauth-apigee
     options:
