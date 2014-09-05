@@ -82,12 +82,12 @@ $ a127 account create myApigeeAccount
 4. Execute: `$ a127 project start`.
 5. Try the example curl commands that are printed to the console (from another console window):
 
-    **Twitter Search:** This command calls the Twitter search API through the Apigee 127 proxy, running locally on your machine. The OAuth Bearer token was generated through Volos and added to this curl command by the app:
+	**Twitter Search:** This command calls the Twitter search API through the Apigee 127 proxy, running locally on your machine. The OAuth Bearer token was generated through Volos and added to this curl command by the app:
 
-`$ curl -H "Authorization: Bearer 123ababababababa" "http://localhost:10010/twitter?search=apigee"`
+	`$ curl -H "Authorization: Bearer 123ababababababa" "http://localhost:10010/twitter?search=apigee"`
 
 
-    **Get a Password Token:** This command returns a new access token on behalf of the user. You can try substituting this access token in the Twitter search API call. 
+	**Get a Password Token:** This command returns a new access token on behalf of the user. You can try substituting this access token in the Twitter search API call. 
 `$ curl -X POST "http://localhost:10010/accesstoken" -d "grant_type=password&client_id=xxxxxxxxxxxxx&client_secret=yyyyyyyyyy&username=jdoe&password=password"`
 
 
