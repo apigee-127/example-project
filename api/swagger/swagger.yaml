@@ -73,6 +73,7 @@ paths:
           helper: volos
           function: cacheKey
       quota: {}
+      analytics: {}
     get:
       description: Returns the results of a search of Twitter
       summary: Returns the results of a search of Twitter
