@@ -23,18 +23,18 @@
  ****************************************************************************/
 'use strict';
 
-var twitter = require('../helpers/twitter');
-
 module.exports = {
-  search: search
+  cacheKey: cacheKey,
+  passwordCheck: passwordCheck
 };
 
-function search(req, res, next) {
+function cacheKey(req) {
+  return 'someKey';
+}
 
-  var query = { q: req.swagger.params.search.value, count: 5 };
+function passwordCheck(username, password, cb) {
 
-  twitter.search(query, function(err, reply) {
-    if (err) { return next(err); }
-    res.json(reply);
-  });
+  var passwordOk = (username === 'scott' && password === 'apigee');
+
+  cb(null, passwordOk);
 }

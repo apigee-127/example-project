@@ -14,14 +14,18 @@
     "underscore": "",
     "express": "",
     "twit": "",
-    "js-yaml": "",
     "a127-magic": "",
+    "volos-analytics-apigee": "",
+    "volos-analytics-common": "",
+    "volos-analytics-memory": "",
+    "volos-cache-apigee": "",
     "volos-cache-memory": "",
-    "volos-quota-memory": "",
-    "volos-oauth-redis": "",
-    "volos-oauth-apigee": "",
+    "volos-cache-redis": "",
     "volos-quota-apigee": "",
-    "volos-cache-apigee": ""
+    "volos-quota-memory": "",
+    "volos-quota-redis": "",
+    "volos-oauth-redis": "",
+    "volos-oauth-apigee": ""
   },
   "devDependencies":  {
     "volos-management-apigee": "",

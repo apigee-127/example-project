@@ -45,7 +45,7 @@ To run the example project, you need to set up these things first:
 1. Create a [Twitter app](https://dev.twitter.com/apps). Any app will do, even a simple/dummy app. You'll need to grab the Access Token and Access Token Secret keys from the app later. If you use keys from an existing app, be sure they are not expired. 
 2. Configure an Apigee 127 account to hold your Apigee account information with the command `a127 account create <anAccountName>`. If you do not have an account on Apigee.com you will be prompted to create one.Enter this command and follow the prompts, entering information about your Apigee account:
 
-```bash        
+```bash
 $ a127 account create myApigeeAccount
 
     [?] Provider? apigee
@@ -56,9 +56,7 @@ $ a127 account create myApigeeAccount
     [?] Password? *********
     [?] Environment? test
     [?] Virtual Hosts? default,secure  //-- Enter to accept the default
-```     
-    **Note:** If you already have an existing account, and create a new one, then you can switch to the new account by executing `a127 account select <account-name>`.
-
+```
 
 ## <a name="configure-and-run"></a>Configure and run the app
 

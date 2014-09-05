@@ -7,10 +7,10 @@ var volos = config.volos;
 var express = require('express');
 var _ = require('underscore');
 
-
 /******* Swagger *******/
 
 var a127 = require('a127-magic');
+var oauth = a127.resource('oauth2');
 
 /**** Express ****/
 
@@ -37,30 +37,7 @@ function startExpress() {
 
 /**** OAuth ****/
 
-// todo: deal with this account & secret stuff in a sane way.
-a127.config.loader = {
-  load: function(file) {
-    var yaml = require('js-yaml');
-    var fs = require('fs');
-    var swaggerObject = yaml.safeLoad(fs.readFileSync(file, 'utf8'));
-    swaggerObject['x-volos-resources']['oauth2']['options'] = [ config.apigee ];
-    return swaggerObject;
-  }
-};
-
-
-var oauthConfig = _.extend({
-  validGrantTypes: [ 'client_credentials', 'authorization_code', 'implicit_grant', 'password' ],
-  passwordCheck: checkPassword
-}, config.apigee);
-
-function checkPassword(username, password, cb) {
-  cb(null, true);
-}
-
-var management = volos.Management.create(oauthConfig);
-var oauth = volos.OAuth.create(oauthConfig);
-
+var management = volos.Management.create(config.apigee);
 
 function createToken(management, oauth, cb) {
 
@@ -95,17 +72,18 @@ function printHelp() {
   createToken(management, oauth, function(err, creds) {
     if (err) {
       console.log(err);
-      throw err;
+      console.log(err.stack);
+      return;
     }
 
     console.log('listening on %d', PORT);
 
     console.log('\nexample curl commands:\n');
 
-    console.log('Get a Password Token:');
+    console.log('Get a Client Credential Token:');
     console.log('curl -X POST "http://localhost:%s/accesstoken" -d ' +
-      '"grant_type=password&client_id=%s&client_secret=%s&username=%s&password=%s"\n',
-      PORT, encodeURIComponent(creds.clientId), encodeURIComponent(creds.clientSecret), 'sganyo', 'password');
+      '"grant_type=client_credentials&client_id=%s&client_secret=%s"\n',
+      PORT, encodeURIComponent(creds.clientId), encodeURIComponent(creds.clientSecret));
 
     console.log('Twitter Search:');
     console.log('curl -H "Authorization: Bearer %s" "http://localhost:%s/twitter?search=apigee"\n',
