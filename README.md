@@ -1,6 +1,6 @@
 # Apigee 127 Example Project
 
-This example gets you up and running quickly with a sample Apigee 127 project that proxies the Twitter search API.  
+This example gets you up and running quickly with a sample Apigee 127 API project that proxies the Twitter search API.  
 
 * [About the app](#about)
 * [Installation](#installation)
@@ -10,19 +10,19 @@ This example gets you up and running quickly with a sample Apigee 127 project th
 
 ## <a name="about"></a>About the app
 
-This example application implements an API proxy for the Twitter search API. A Node.js server running on your local system communicates with Apigee Edge through the volos Node.js module's management API. 
+This example application implements an API proxy for the Twitter search API. A Node.js server running on your local system communicates with Apigee Edge through the [Volos.js](https://github.com/apigee-127/a127-documentation/wiki/Understanding-Volos.js) module's management API. In this example, Apigee Edge handles OAuth requests. 
 
-Volos is an open source Node.js solution for developing and deploying production-level APIs. Volos provides a way to leverage common features such as OAuth 2.0, Caching, and Quota Management into your APIs. Volos can proxy support for these features through Apigee Edge, or independently of Edge. 
-
-This example runs locally and makes calls to Apigee Edge to handle OAuth requests. Volos provides the glue that binds together your API implementation and Apigee Edge. 
+The flow looks like this:
 
 ![Alt text](https://raw.githubusercontent.com/apigee-127/a127-documentation/master/a127/images/with-edge.png)
 
-1. Volos calls Apigee Edge to perform OAuth, Quota, or Caching. Volos only sends metadata to Edge, not the API payload. 
+1. Volos.js calls Apigee Edge to perform OAuth validation (Volos.js can also manage quota, caching, and analytics functions). Volos only sends metadata to Edge, not the API payload. 
 3. Edge returns a response indicating whether the key was valid.
 4. If valid, the API call is proxied to the local Node.js API implementation.
 5. The API response is returned from the API implementation.
-6. (Optional) Metadata is sent to Edge for centralized analytics and monitoring. 
+
+**About Volos.js**: [Volos.js](https://github.com/apigee-127/a127-documentation/wiki/Understanding-Volos.js) is an open source Node.js solution for developing and deploying production-level APIs. Volos.js provides a way to leverage common features such as OAuth 2.0, Caching, and Quota Management into your APIs. Volos.js can proxy support for these features through Apigee Edge, or independently of Edge. 
+
 
 ## <a name="installation"></a>Installation
 
@@ -43,7 +43,12 @@ This example runs locally and makes calls to Apigee Edge to handle OAuth request
 To run the example project, you need to set up these things first:
 
 1. Create a [Twitter app](https://dev.twitter.com/apps). Any app will do, even a simple/dummy app. You'll need to grab the Access Token and Access Token Secret keys from the app later. If you use keys from an existing app, be sure they are not expired. 
-2. Configure an Apigee 127 account to hold your Apigee account information with the command `a127 account create <anAccountName>`. If you do not have an account on Apigee.com you will be prompted to create one.Enter this command and follow the prompts, entering information about your Apigee account:
+2. Execute this command and follow the prompts to configure your Apigee account information:
+
+    ``a127 account create <anAccountName>`
+
+>If you do not have an account on Apigee.com you will be prompted to create one. 
+
 ```bash        
 $ a127 account create myApigeeAccount
 
@@ -55,7 +60,8 @@ $ a127 account create myApigeeAccount
     [?] Password? *********
     [?] Environment? test
     [?] Virtual Hosts? default,secure  //-- Enter to accept the default
-```     
+```
+
 > If you already have an existing account, and create a new one, then you can switch to the new account by executing `a127 account select <account-name>`.
 
 ## <a name="configure-and-run"></a>Configure and run the app
