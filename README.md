@@ -62,21 +62,23 @@ $ a127 account create myApigeeAccount
 
 1. In the `example-project`, copy `config/secrets.sample.js` to `config/secrets.js`.
 2. Edit `config/secrets.js` with your Twitter API keys and Access Tokens. You can find them on the management console for your Twitter app, under the API Keys tab.
-  
-  exports.twitter = {
-    consumer_key:        '123xxxxxxxxxxxxxxxx',
-    consumer_secret:     '456yyyyyyyyyyyyyyyy',
-    access_token:        '789aaaaaaaaaaaaaaaa',
-    access_token_secret: '123bbbbbbbbbbbbbbbb'
-  };
-  
-3. In the same file, edit the Apigee Edge object with your Edge account information. Leave the `uri`, `key`, and `secret` attributes blank.
-  exports.apigee = {
-    organization: 'jdoe',
-    user: 'jdoe@apigee.com',
-    password: 'mypassword'
-  };
-4. Execute: `$ a127 project start`.
+
+        exports.twitter = {
+          consumer_key:        '123xxxxxxxxxxxxxxxx',
+          consumer_secret:     '456yyyyyyyyyyyyyyyy',
+          access_token:        '789aaaaaaaaaaaaaaaa',
+          access_token_secret: '123bbbbbbbbbbbbbbbb'
+        };
+    
+3. In the same file, edit the Apigee Edge object with your Edge account information.
+
+        exports.apigee = {
+          organization: 'jdoe',
+          user: 'jdoe@apigee.com',
+          password: 'mypassword'
+        };
+
+4. Execute: `$ a127 project start` from the project directory.
 5. Try the example curl commands that are printed to the console (from another console window):
 
     **Twitter Search:** This command calls the Twitter search API through the Apigee 127 proxy, running locally on your machine. The OAuth Bearer token was generated through Volos and added to this curl command by the app:
