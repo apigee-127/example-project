@@ -56,12 +56,6 @@ x-volos-resources:
       passwordCheck:
         helper: volos
         function: passwordCheck
-    paths:
-      note: these will be placed in the paths section
-      authorize: /authorize
-      token: /accessToken
-      invalidate: /invalidate
-      refresh: /refresh
 paths:
   /twitter:
     x-swagger-router-controller: twitter
