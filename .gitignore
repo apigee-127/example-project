@@ -34,3 +34,4 @@ node_modules
 config/.a127_env
 config/.a127_secrets
 config/secrets.js
+deployments
