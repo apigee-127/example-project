@@ -47,7 +47,7 @@ To run the example project, you need to set up these things first:
 
     ``a127 account create <anAccountName>`
 
->If you do not have an account on Apigee.com you will be prompted to create one. 
+>Be sure to select `apigee` as the Provider. If you do not have an account on Apigee.com you will be prompted to create one. 
 
 ```bash        
 $ a127 account create myApigeeAccount
