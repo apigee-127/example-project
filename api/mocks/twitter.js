@@ -23,8 +23,6 @@
  ****************************************************************************/
 'use strict';
 
-var twitter = require('../helpers/twitter');
-
 module.exports = {
   search: search
 };
