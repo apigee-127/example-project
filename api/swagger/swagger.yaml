@@ -17,6 +17,7 @@ schemes:
   - https
 consumes:
   - application/json
+  - application/x-www-form-urlencoded
 produces:
   - application/json
 x-a127-config:
@@ -56,6 +57,11 @@ x-volos-resources:
       passwordCheck:
         helper: volos
         function: passwordCheck
+      tokenPaths:  # These will be added to your paths section for you
+        authorize: /authorize
+        token: /accesstoken
+        invalidate: /invalidate
+        refresh: /refresh
 paths:
   /twitter:
     x-swagger-router-controller: twitter

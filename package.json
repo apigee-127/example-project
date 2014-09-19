@@ -25,7 +25,8 @@
     "volos-quota-memory": "",
     "volos-quota-redis": "",
     "volos-oauth-redis": "",
-    "volos-oauth-apigee": ""
+    "volos-oauth-apigee": "",
+    "body-parser": ""
   },
   "devDependencies":  {
     "volos-management-apigee": "",

@@ -20,12 +20,6 @@ function startExpress() {
 
   app.use(a127.middleware());
 
-  // todo: move these into swagger
-  app.get('/authorize', oauth.expressMiddleware().handleAuthorize());
-  app.post('/accesstoken', oauth.expressMiddleware().handleAccessToken());
-  app.post('/invalidate', oauth.expressMiddleware().invalidateToken());
-  app.post('/refresh', oauth.expressMiddleware().refreshToken());
-
   app.listen(PORT);
 
   printHelp();
