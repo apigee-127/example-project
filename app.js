@@ -1,16 +1,11 @@
 'use strict';
 
+
 /**** Init ****/
 
-var config = require('./config');
-var volos = config.volos;
 var express = require('express');
-var _ = require('underscore');
-
-/******* Swagger *******/
-
+var bodyParser = require('body-parser'); // if using Express 4.x
 var a127 = require('a127-magic');
-var oauth = a127.resource('oauth2');
 
 /**** Express ****/
 
@@ -19,6 +14,9 @@ var PORT = process.env.PORT || 10010;
 function startExpress() {
 
   var app = express();
+//  app.use(express.urlencoded()); // if using Express 3.x
+  app.use(bodyParser.urlencoded()); // if using Express 4.x
+  app.use(bodyParser.json()); // if using Express 4.x
 
   app.use(a127.middleware());
 
@@ -33,13 +31,43 @@ function startExpress() {
   printHelp();
 }
 
+startExpress();
 
 
-/**** OAuth ****/
+/*
+ * All the following code just to generate a token and print the help and is generally unnecessary for your app.
+ */
 
-var management = volos.Management.create(config.apigee);
+function printHelp() {
 
-function createToken(management, oauth, cb) {
+  var config = require('./config');
+  var volos = config.volos;
+  var management = volos.Management.create(config.apigee);
+  var oauth = a127.resource('oauth2');
+
+  createToken(management, oauth, config, function(err, creds) {
+    if (err) {
+      console.log(err);
+      console.log(err.stack);
+      return;
+    }
+
+    console.log('listening on %d', PORT);
+
+    console.log('\nexample curl commands:\n');
+
+    console.log('Get a Client Credential Token:');
+    console.log('curl -X POST "http://localhost:%s/accesstoken" -d ' +
+      '"grant_type=client_credentials&client_id=%s&client_secret=%s"\n',
+      PORT, encodeURIComponent(creds.clientId), encodeURIComponent(creds.clientSecret));
+
+    console.log('Twitter Search:');
+    console.log('curl -H "Authorization: Bearer %s" "http://localhost:%s/twitter?search=apigee"\n',
+      creds.accessToken, PORT);
+  });
+}
+
+function createToken(management, oauth, config, cb) {
 
   management.getDeveloperApp(config.devRequest.userName, config.appRequest.name, function(err, app) {
     if (err) { cb(err); }
@@ -63,33 +91,4 @@ function createToken(management, oauth, cb) {
       cb(null, tokenRequest);
     });
   });
-
 }
-
-
-function printHelp() {
-
-  createToken(management, oauth, function(err, creds) {
-    if (err) {
-      console.log(err);
-      console.log(err.stack);
-      return;
-    }
-
-    console.log('listening on %d', PORT);
-
-    console.log('\nexample curl commands:\n');
-
-    console.log('Get a Client Credential Token:');
-    console.log('curl -X POST "http://localhost:%s/accesstoken" -d ' +
-      '"grant_type=client_credentials&client_id=%s&client_secret=%s"\n',
-      PORT, encodeURIComponent(creds.clientId), encodeURIComponent(creds.clientSecret));
-
-    console.log('Twitter Search:');
-    console.log('curl -H "Authorization: Bearer %s" "http://localhost:%s/twitter?search=apigee"\n',
-      creds.accessToken, PORT);
-  });
-}
-
-
-startExpress();
