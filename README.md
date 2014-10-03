@@ -84,6 +84,8 @@ $ a127 account create myApigeeAccount
           password: 'mypassword'
         };
 
+4. Execute: `node bin/create-app.js`
+    >Note: This step provisions a developer app on Apigee Edge. 
 4. Execute: `$ a127 project start` from the project directory.
 5. Try the example curl commands that are printed to the console (from another console window):
 
