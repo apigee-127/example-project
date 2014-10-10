@@ -4,7 +4,7 @@
 /**** Init ****/
 
 var express = require('express');
-var bodyParser = require('body-parser'); // if using Express 4.x
+var bodyParser = require('body-parser');
 var a127 = require('a127-magic');
 
 /**** Express ****/
@@ -14,9 +14,8 @@ var PORT = process.env.PORT || 10010;
 function startExpress() {
 
   var app = express();
-//  app.use(express.urlencoded()); // if using Express 3.x
-  app.use(bodyParser.urlencoded()); // if using Express 4.x
-  app.use(bodyParser.json()); // if using Express 4.x
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.json());
 
   app.use(a127.middleware());
 
@@ -64,7 +63,7 @@ function printHelp() {
 function createToken(management, oauth, config, cb) {
 
   management.getDeveloperApp(config.devRequest.userName, config.appRequest.name, function(err, app) {
-    if (err) { cb(err); }
+    if (err) { return cb(err); }
 
     var tokenRequest = {
       clientId: app.credentials[0].key,
@@ -72,7 +71,7 @@ function createToken(management, oauth, config, cb) {
     };
 
     oauth.spi.createTokenClientCredentials(tokenRequest, function(err, result) {
-      if (err) { cb(err); }
+      if (err) { return cb(err); }
 
       var accessToken = result.access_token;
 
