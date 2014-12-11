@@ -119,8 +119,7 @@ securityDefinitions:
   oauth2:
     type: oauth2
     scopes:
-      -
-        read: "allow read"
+      read: "allow read"
     flow: application
     authorizationUrl: whatever
     tokenUrl: whatever
