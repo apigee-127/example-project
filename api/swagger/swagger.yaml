@@ -6,10 +6,10 @@ info:
   termsOfService: "http://apigee.com/about/terms"
   contact:
     name: Apigee 127
-    url: "https://github.com/apigee-127"
+    url: https://github.com/apigee-127
   license:
     name: MIT
-    url: "http://opensource.org/licenses/MIT"
+    url: http://opensource.org/licenses/MIT
 host: localhost
 basePath: /
 schemes:
@@ -119,7 +119,6 @@ securityDefinitions:
   oauth2:
     type: oauth2
     scopes:
-      read: "allow read"
+      read: read access
     flow: application
-    authorizationUrl: whatever
-    tokenUrl: whatever
+    tokenUrl: ignored
