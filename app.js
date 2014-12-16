@@ -17,11 +17,13 @@ function startExpress() {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
 
-  app.use(a127.middleware());
+  a127.init(function(config) {
+    app.use(a127.middleware(config));
 
-  app.listen(PORT);
+    app.listen(PORT);
 
-  printHelp();
+    printHelp();
+  });
 }
 
 startExpress();
