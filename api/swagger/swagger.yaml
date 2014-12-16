@@ -47,6 +47,7 @@ x-a127-services:
   oauth2:
     provider: volos-oauth-apigee
     options:
+      cache: cache
       key: *apigeeProxyKey
       uri: *apigeeProxyUri
       validGrantTypes:
