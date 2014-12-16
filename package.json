@@ -14,7 +14,7 @@
     "underscore": "",
     "express": "",
     "twit": "",
-    "a127-magic": "",
+    "a127-magic": "^0.7.0",
     "volos-analytics-apigee": "",
     "volos-analytics-common": "",
     "volos-analytics-memory": "",
