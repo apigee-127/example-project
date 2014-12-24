@@ -52,12 +52,12 @@ function printHelp() {
     console.log('\nexample curl commands:\n');
 
     console.log('Get a Client Credential Token:');
-    console.log('curl -X POST "http://localhost:%s/accesstoken" -d ' +
+    console.log('curl -X POST "http://127.0.0.1:%s/accesstoken" -d ' +
       '"grant_type=client_credentials&client_id=%s&client_secret=%s"\n',
       PORT, encodeURIComponent(creds.clientId), encodeURIComponent(creds.clientSecret));
 
     console.log('Twitter Search:');
-    console.log('curl -H "Authorization: Bearer %s" "http://localhost:%s/twitter?search=apigee"\n',
+    console.log('curl -H "Authorization: Bearer %s" "http://127.0.0.1:%s/twitter?search=apigee"\n',
       creds.accessToken, PORT);
   });
 }
