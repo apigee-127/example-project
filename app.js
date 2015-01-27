@@ -4,7 +4,6 @@
 /**** Init ****/
 
 var express = require('express');
-var bodyParser = require('body-parser');
 var a127 = require('a127-magic');
 
 /**** Express ****/
@@ -14,8 +13,6 @@ var PORT = process.env.PORT || 10010;
 function startExpress() {
 
   var app = express();
-  app.use(bodyParser.urlencoded({ extended: false }));
-  app.use(bodyParser.json());
 
   a127.init(function(config) {
     app.use(a127.middleware(config));

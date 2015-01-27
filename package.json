@@ -25,12 +25,12 @@
     "volos-quota-memory": "",
     "volos-quota-redis": "",
     "volos-oauth-redis": "",
-    "volos-oauth-apigee": "",
-    "body-parser": ""
+    "volos-oauth-apigee": ""
   },
   "devDependencies":  {
     "volos-management-apigee": "",
-    "should" : ""
+    "should": "4.4.x",
+    "supertest": "0.15.x"
   },
   "scripts" : {
     "start" : "node app.js"
