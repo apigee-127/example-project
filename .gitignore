@@ -33,5 +33,6 @@ node_modules
 # Apigee 127 deployment
 config/.a127_env
 config/.a127_secrets
+config/.a127_services
 config/secrets.js
 deployments
