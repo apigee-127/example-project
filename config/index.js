@@ -37,10 +37,10 @@ exports.volos = {
 };
 
 exports.devRequest = {
-  firstName: 'Some',
-  lastName: 'Person',
-  email: 'someperson@example.com',
-  userName: 'someperson@example.com'
+  firstName: 'A127',
+  lastName: 'Example',
+  email: 'a127example@apigee.com',
+  userName: 'a127example@apigee.com'
 };
 
 exports.appRequest = {
