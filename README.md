@@ -74,6 +74,12 @@ $ a127 service create RemoteProxy
 
  Note: The name of this service is important - this is what is pre-configured for you in your config/default.yaml.
 
+4) Bind the "RemoteProxy" service to your application:
+
+```bash
+$ a127 project bind RemoteProxy
+```
+
 ## <a name="configure-and-run"></a>Configure and run the app
 
 1. In the `example-project`, copy `config/secrets.sample.js` to `config/secrets.js`.
