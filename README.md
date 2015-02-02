@@ -64,6 +64,16 @@ $ a127 account create myApigeeAccount
 
 > If you already have an existing account, and create a new one, then you can switch to the new account by executing `a127 account select <account-name>`.
 
+3) Create an Apigee Remote Service called "RemoteProxy":
+
+```bash
+$ a127 service create RemoteProxy
+  [?] Service Type? (Use arrow keys)
+  ❯ RemoteProxy
+```
+
+ Note: The name of this service is important - this is what is pre-configured for you in your config/default.yaml.
+
 ## <a name="configure-and-run"></a>Configure and run the app
 
 1. In the `example-project`, copy `config/secrets.sample.js` to `config/secrets.js`.
